@@ -12,13 +12,33 @@ export default function StudyForm() {
   const [isLoading, setIsLoading] = useState(false);
 
   async function generateStudyPlan(e: any) {
-    e.preventDefault(); // Prevents the page from refreshing
+    e.preventDefault();
     setIsLoading(true);
 
-    // Day 2 Task: We will build this API route next!
-    alert(`We will send ${subject} to the AI soon!`);
-    
-    setIsLoading(false);
+    try {
+      // Hit our new backend endpoint and send our state variables
+      const res = await fetch("/api/generate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ subject, topics, examDate }),
+      });
+
+      const data = await res.json();
+      
+      if (data.plan) {
+        // Save the AI text into our state box to display it on the PlanCard!
+        setStudyPlan(data.plan);
+      } else {
+        alert("Failed to generate plan: " + (data.error || "Unknown error"));
+      }
+    } catch (err) {
+      console.error(err);
+      alert("An error occurred while talking to the backend.");
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
