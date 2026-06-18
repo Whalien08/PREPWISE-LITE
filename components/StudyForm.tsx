@@ -11,7 +11,6 @@ export default function StudyForm() {
   const [studyPlan, setStudyPlan] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  // The magic ": any" saves us from TypeScript errors!
   async function generateStudyPlan(e: any) {
     e.preventDefault(); // Prevents the page from refreshing
     setIsLoading(true);
