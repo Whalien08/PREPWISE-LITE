@@ -79,17 +79,6 @@ export default function StudyForm() {
         {isLoading ? "Generating Schedule..." : "Generate AI Study Plan"}
       </button>
       <PlanCard planText={studyPlan} />
-
-      {studyPlan && (
-        <div className="border border-zinc-700 p-4 rounded bg-zinc-900 mt-6">
-          <h2 className="font-bold mb-2 text-purple-400">
-            Your Personalized Study Schedule
-          </h2>
-          <p className="whitespace-pre-line text-white">
-            {studyPlan}
-          </p>
-        </div>
-      )}
     </form>
   );
 }
