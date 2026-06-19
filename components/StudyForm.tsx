@@ -78,7 +78,7 @@ export default function StudyForm() {
       >
         {isLoading ? "Generating Schedule..." : "Generate AI Study Plan"}
       </button>
-      <PlanCard planText={studyPlan} />
+      <PlanCard planText={studyPlan} subject={subject} topics={topics} />
     </form>
   );
 }

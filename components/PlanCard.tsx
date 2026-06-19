@@ -1,8 +1,23 @@
-// components/PlanCard.tsx
+import { useState } from "react";
+import { saveStudyPlan } from "../app/actions";
 
-export default function PlanCard({ planText }: any) {
-  // If there is no plan text yet, don't show the card at all.
+export default function PlanCard({ planText, subject, topics }: any) {
+  const [isSaving, setIsSaving] = useState(false);
+  const [saved, setSaved] = useState(false);
+
   if (!planText) return null;
+
+  async function handleSave() {
+    setIsSaving(true);
+    const result = await saveStudyPlan(subject, topics, planText);
+    
+    if (result.success) {
+      setSaved(true);
+    } else {
+      alert("Failed to save to database. Check terminal.");
+    }
+    setIsSaving(false);
+  }
 
   return (
     <div className="border border-zinc-700 p-6 rounded-lg bg-zinc-900 mt-8 shadow-lg">
@@ -10,17 +25,19 @@ export default function PlanCard({ planText }: any) {
         Your Personalized Study Schedule
       </h2>
       
-      {/* whitespace-pre-line ensures the formatting/line-breaks from the AI are kept */}
       <div className="text-white whitespace-pre-line leading-relaxed">
         {planText}
       </div>
 
-      {/* Day 3 Task: We will make this button actually save to Supabase later! */}
       <button 
-        className="mt-6 bg-zinc-800 hover:bg-zinc-700 text-white px-4 py-2 rounded border border-zinc-600 transition-colors w-full sm:w-auto"
-        onClick={() => alert("This will save to Supabase in Day 3!")}
+        onClick={handleSave}
+        disabled={isSaving || saved}
+        className={`mt-6 px-4 py-2 rounded border transition-colors w-full sm:w-auto font-bold
+          ${saved 
+            ? "bg-green-600 border-green-500 text-white" 
+            : "bg-zinc-800 hover:bg-zinc-700 text-white border-zinc-600"}`}
       >
-        💾 Save Plan
+        {isSaving ? "Saving..." : saved ? "✅ Saved to Supabase!" : "💾 Save Plan"}
       </button>
     </div>
   );
