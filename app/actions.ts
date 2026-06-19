@@ -1,11 +1,12 @@
 "use server";
 
-// 1. Import our safe, single connection from the lib folder
 import { prisma } from "../lib/prisma"; 
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
-// 2. Our adapted function for saving the AI's plan
 export async function saveStudyPlan(subject: string, topics: string, planText: string) {
+  let isSuccess = false;
+
   try {
     await prisma.studyPlan.create({
       data: {
@@ -14,13 +15,30 @@ export async function saveStudyPlan(subject: string, topics: string, planText: s
         planText: planText,
       },
     });
+    
+    isSuccess = true; // Mark it as successful
+    
+  } catch (error) {
+    console.error("Prisma Save Error:", error);
+    return { success: false };
+  }
+  if (isSuccess) {
+    revalidatePath("/saved"); 
+    redirect("/saved"); 
+  }
+}
 
-    // Refresh the page data invisibly in the background
-    revalidatePath("/"); 
+export async function deleteStudyPlan(id: string) {
+  try {
+    await prisma.studyPlan.delete({
+      where: { id: id },
+    });
+
+    revalidatePath("/saved"); 
     return { success: true };
     
   } catch (error) {
-    console.error("Failed to save to Supabase:", error);
+    console.error("Prisma Delete Error:", error);
     return { success: false };
   }
 }
