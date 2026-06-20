@@ -11,7 +11,7 @@ export default function PlanCard({ planText, subject, topics }: any) {
     setIsSaving(true);
     const result = await saveStudyPlan(subject, topics, planText);
     
-    if (result.success) {
+    if (result?.success) {
       setSaved(true);
     } else {
       alert("Failed to save to database. Check terminal.");
