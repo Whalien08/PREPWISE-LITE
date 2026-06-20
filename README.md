@@ -1,6 +1,6 @@
 # 📚 PrepWise AI - Smart Study Planner
 
-> **Live Demo:** [Insert your Vercel link here]
+> **Live Demo:** [https://prepwise-lite-five.vercel.app/]
 
 PrepWise AI is a full-stack Next.js application designed to help students generate, manage, and track personalized exam study schedules. 
 
@@ -37,21 +37,21 @@ To run PrepWise AI on your local machine, follow these steps:
 git clone [https://github.com/YourUsername/YourRepoName.git](https://github.com/YourUsername/YourRepoName.git)
 cd YourRepoName
 ```
-2. Install dependencies
+### 2. Install dependencies
 ```Bash
 
 npm install
 ```
-3. Configure Environment Variables
+### 3. Configure Environment Variables
 
 Create a .env file in the root directory. You will need to provision your own PostgreSQL database (Supabase is recommended).
 Code snippet
 
-# Database connection string from Supabase
+###### Database connection string from Supabase
 DATABASE_URL="postgresql://postgres.[your-id]:[your-password]@[aws-0-eu-central-1.pooler.supabase.com:6543/postgres](https://aws-0-eu-central-1.pooler.supabase.com:6543/postgres)"
 
-# Custom Authentication Secret (Can be any secure, random string)
-JWT_SECRET="your_super_secret_jwt_key_here"
+###### AI Integration
+GROQ_API_KEY="your_groq_api_key_here"
 
 4. Initialize the Database
 
