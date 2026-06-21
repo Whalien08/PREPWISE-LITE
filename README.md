@@ -10,11 +10,11 @@ Built from the ground up, this application features a completely custom, secure 
 
 ## ✨ Key Features
 
-* **Smart Study Generation:** Users can input specific subjects and topics to generate structured, actionable study plans.
-* **Custom Security Architecture:** Implements a from-scratch authentication system utilizing JSON Web Tokens (JWT) stored in HTTP-only cookies to prevent cross-site scripting (XSS) attacks.
-* **Protected Routes:** Next.js Middleware acts as a strict gateway, ensuring only authenticated users can access the `/saved` dashboard.
-* **Relational Database Design:** Powered by a PostgreSQL database managed via Prisma ORM, featuring one-to-many relational mapping between `Users` and their `StudyPlans`.
-* **Password Cryptography:** All user credentials are encrypted utilizing `bcryptjs` (12-round hashing) prior to database insertion.
+* **Smart Study Generation:** Users can input specific subjects and topics to instantly generate structured, actionable, and personalized study plans.
+* **AI Integration:** Powered by the **Groq API** for lightning-fast, intelligent analysis of study requirements to output optimized daily schedules.
+* **Database Driven:** Seamlessly saves and retrieves user-generated study plans using a PostgreSQL database managed via Prisma ORM.
+* **Modern Architecture:** Utilizes Next.js 14 App Router and Server Actions for fast, server-side data fetching and form mutations.
+* **Responsive UI:** A sleek, dark-mode interface built completely from scratch using Tailwind CSS.
 
 ---
 
