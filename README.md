@@ -47,20 +47,20 @@ npm install
 Create a .env file in the root directory. You will need to provision your own PostgreSQL database (Supabase is recommended).
 Code snippet
 
-###### Database connection string from Supabase
-DATABASE_URL="postgresql://postgres.[your-id]:[your-password]@[aws-0-eu-central-1.pooler.supabase.com:6543/postgres](https://aws-0-eu-central-1.pooler.supabase.com:6543/postgres)"
+##### Database connection string from Supabase
+###### DATABASE_URL="postgresql://postgres.[your-id]:[your-password]@[aws-0-eu-central-1.pooler.supabase.com:6543/postgres](https://aws-0-eu-central-1.pooler.supabase.com:6543/postgres)"
 
-###### AI Integration
-GROQ_API_KEY="your_groq_api_key_here"
+##### AI Integration
+###### GROQ_API_KEY="your_groq_api_key_here"
 
-4. Initialize the Database
+### 4. Initialize the Database
 
 Push the Prisma schema to your PostgreSQL database to construct the User and StudyPlan tables, and establish their foreign key relationships.
 Bash
 ```bash
 npx prisma db push
 ```
-5. Start the Development Server
+### 5. Start the Development Server
 ```Bash
 
 npm run dev
