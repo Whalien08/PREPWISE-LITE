@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { saveStudyPlan } from "../app/actions";
 
@@ -20,25 +22,29 @@ export default function PlanCard({ planText, subject, topics }: any) {
   }
 
   return (
-    <div className="border border-zinc-700 p-6 rounded-lg bg-zinc-900 mt-8 shadow-lg">
-      <h2 className="text-xl font-bold mb-4 text-purple-400 border-b border-zinc-700 pb-2">
-        Your Personalized Study Schedule
+    <div className="border border-slate-800 p-6 md:p-8 rounded-2xl bg-slate-900/50 shadow-xl backdrop-blur-sm">
+      
+      <h2 className="font-poppins text-2xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400 border-b border-slate-800/50 pb-4">
+        Your Personalized Study Protocol
       </h2>
       
-      <div className="text-white whitespace-pre-line leading-relaxed">
+      <div className="text-slate-300 whitespace-pre-line leading-relaxed text-sm md:text-base">
         {planText}
       </div>
 
-      <button 
-        onClick={handleSave}
-        disabled={isSaving || saved}
-        className={`mt-6 px-4 py-2 rounded border transition-colors w-full sm:w-auto font-bold
-          ${saved 
-            ? "bg-green-600 border-green-500 text-white" 
-            : "bg-zinc-800 hover:bg-zinc-700 text-white border-zinc-600"}`}
-      >
-        {isSaving ? "Saving..." : saved ? "✅ Saved to Supabase!" : "💾 Save Plan"}
-      </button>
+      <div className="mt-8 pt-6 border-t border-slate-800/50 flex justify-end">
+        <button 
+          onClick={handleSave}
+          disabled={isSaving || saved}
+          className={`px-6 py-3 rounded-xl transition-all font-poppins font-semibold text-sm w-full sm:w-auto flex justify-center items-center gap-2 active:scale-[0.98]
+            ${saved 
+              ? "bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 cursor-default" 
+              : "bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 shadow-lg hover:shadow-xl"}`}
+        >
+          {isSaving ? "Saving..." : saved ? "✓ Protocol Secured" : "💾 Save to Dashboard"}
+        </button>
+      </div>
+      
     </div>
   );
 }
