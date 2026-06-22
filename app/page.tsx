@@ -26,7 +26,7 @@ export default function Home() {
         {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="font-poppins text-5xl md:text-6xl font-bold tracking-tight text-white mb-6">
-            Master Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">Learning Path.</span>
+            Master Your <span className="text-blue-400">Learning Path.</span>
           </h1>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
             Harness high-velocity AI to generate structured, professional study protocols for complex engineering and CS subjects.
